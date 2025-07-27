@@ -1,0 +1,248 @@
+C51 COMPILER V9.60.7.0   8051_GLCD_TEXT_FONT                                               07/18/2025 19:25:57 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE 8051_GLCD_TEXT_FONT
+OBJECT MODULE PLACED IN 8051_GLCD_Text_Font.OBJ
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE 8051_GLCD_Text_Font.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND TABS(2
+                    -)
+
+line level    source
+
+   1          #include <reg51.h>
+   2          #include <intrins.h>
+   3          #include <stdlib.h>
+   4          #include "Font_Header.h"
+   5          
+   6          #define Data_Port P1
+   7          
+   8          // Pinos de Controle do GLCD
+   9          sbit RS  = P3^2;
+  10          sbit E   = P3^0;
+  11          sbit CS1 = P3^4;
+  12          sbit CS2 = P3^3;
+  13          
+  14          // Pinos de Controle do Jogador
+  15          sbit Dir = P3^1;  // Move para direita
+  16          sbit Esq = P3^5;  // Move para esquerda
+  17          
+  18          #define WIDTH 9
+  19          #define HEIGHT 7
+  20          #define PLAYER_Y (HEIGHT - 1)
+  21          #define MAX_ENEMIES 3
+  22          
+  23          typedef struct { unsigned char x, y, active; } Car;
+  24          
+  25          unsigned char track[HEIGHT][WIDTH];
+  26          Car player, enemies[MAX_ENEMIES];
+  27          unsigned int score = 0;
+  28          unsigned char lives = 3, speed = 150;
+  29          signed char track_offset = 0;
+  30          
+  31          void delay(unsigned int k) {
+  32   1          unsigned int i,j;
+  33   1          for (i=0; i<k; i++) for (j=0; j<112; j++);
+  34   1      }
+  35          
+  36          void GLCD_Command(unsigned char c) {
+  37   1          Data_Port = c; RS=0; E=1; nop(); E=0; nop();
+*** WARNING C206 IN LINE 37 OF 8051_GLCD_Text_Font.c: 'nop': missing function-prototype
+  38   1      }
+  39          
+  40          void GLCD_Data(unsigned char d) {
+  41   1          Data_Port = d; RS=1; E=1; nop(); E=0; nop();
+  42   1      }
+  43          
+  44          void GLCD_Init() {
+  45   1          CS1=CS2=1; delay(20);
+  46   1          GLCD_Command(0x3E); GLCD_Command(0x40);
+  47   1          GLCD_Command(0xB8); GLCD_Command(0xC0);
+  48   1          GLCD_Command(0x3F);
+  49   1      }
+  50          
+  51          void GLCD_ClearAll() {
+  52   1          unsigned char p, c;
+  53   1          for (p=0; p<8; p++) {
+C51 COMPILER V9.60.7.0   8051_GLCD_TEXT_FONT                                               07/18/2025 19:25:57 PAGE 2   
+
+  54   2              CS1=1; CS2=0; GLCD_Command(0xB8|p); GLCD_Command(0x40);
+  55   2              for (c=0; c<64; c++) GLCD_Data(0);
+  56   2              CS1=0; CS2=1; GLCD_Command(0xB8|p); GLCD_Command(0x40);
+  57   2              for (c=0; c<64; c++) GLCD_Data(0);
+  58   2          }
+  59   1      }
+  60          
+  61          
+  62          void GLCD_Char(char page_no, char col, char c) {
+  63   1          unsigned char column;
+  64   1          char Page = ((0xB8)+page_no);
+  65   1          
+  66   1          // Verifica se o caractere cruza o limite das p ginas (64 colunas)
+  67   1          if ((col % 64) > 59) {  // Se faltam menos de 5 colunas para o fim da p gina
+  68   2              // Primeira parte do caractere (na p gina atual)
+  69   2              CS1 = (col < 64) ? 1 : 0;
+  70   2              CS2 = (col < 64) ? 0 : 1;
+  71   2              GLCD_Command(Page);
+  72   2              GLCD_Command(0x40 | (col % 64));
+  73   2              
+  74   2              // Desenha a parte que cabe na p gina atual
+  75   2              for (column = 0; column < (64 - (col % 64)); column++) {
+  76   3                  GLCD_Data(font[c][column]);
+  77   3              }
+  78   2              
+  79   2              // Segunda parte do caractere (na pr xima p gina)
+  80   2              CS1 = (col < 64) ? 0 : 1;
+  81   2              CS2 = (col < 64) ? 1 : 0;
+  82   2              GLCD_Command(Page);
+  83   2              GLCD_Command(0x40);  // Come a no in cio da pr xima p gina
+  84   2              
+  85   2              // Desenha o restante do caractere
+  86   2              for (; column < 5; column++) {
+  87   3                  GLCD_Data(font[c][column]);
+  88   3              }
+  89   2              
+  90   2              // Espa o entre caracteres (na pr xima p gina)
+  91   2              GLCD_Data(0);
+  92   2          } else {                                                                                              
+             -              
+  93   2              // Caso normal - caractere cabe inteiro em uma p gina
+  94   2              if (col < 64) {
+  95   3                  CS1 = 1; CS2 = 0;
+  96   3              } else {
+  97   3                  CS1 = 0; CS2 = 1;
+  98   3                  col -= 64;
+  99   3              }
+ 100   2              
+ 101   2              GLCD_Command(Page);
+ 102   2              GLCD_Command(0x40 | col);
+ 103   2              
+ 104   2              for (column = 0; column < 5; column++) {
+ 105   3                  GLCD_Data(font[c][column]);
+ 106   3              }
+ 107   2              GLCD_Data(0); // Espa o entre caracteres
+ 108   2          }
+ 109   1      }
+ 110          
+ 111          
+ 112          void GLCD_String(unsigned char page, char *str) {
+ 113   1          unsigned char col=0;
+ 114   1          while (*str) { GLCD_Char(page, col, *str++); col+=6; }
+C51 COMPILER V9.60.7.0   8051_GLCD_TEXT_FONT                                               07/18/2025 19:25:57 PAGE 3   
+
+ 115   1      }
+ 116          
+ 117          void update_hud() {
+ 118   1          char buf[21];
+ 119   1          buf[0]= 23; buf[1]=14; buf[2]= 21; buf[3]= 22; buf[4]= 16; buf[5]=12;
+ 120   1          buf[6]= 1 +(score/10000)%10; buf[7]= 1 +(score/1000)%10;
+ 121   1          buf[8]= 1 +(score/100)%10; buf[9]= 1 +(score/10)%10;
+ 122   1          buf[10]= 1 +score%10; buf[11]= 0; buf[12]= 0; buf[13]= 25;
+ 123   1          buf[14]= 18; buf[15]= 15; buf[16]= 13; buf[17]= 23; buf[18]= 12;
+ 124   1          buf[19]= 1 +lives; buf[20]=0;
+ 125   1          GLCD_String(0, buf);
+ 126   1      }
+ 127          
+ 128          void init_game() {
+ 129   1          unsigned char i,j;
+ 130   1          track_offset=0; score=0; lives=3;
+ 131   1          for (i=0; i<HEIGHT; i++) for (j=0; j<WIDTH; j++)
+ 132   1              track[i][j]=(j==0||j==WIDTH-1)? 11: 0;
+ 133   1          player.x=WIDTH/2; player.y=PLAYER_Y;
+ 134   1          track[player.y][player.x]= 26;
+ 135   1          for (i=0; i<MAX_ENEMIES; i++) enemies[i].active=0;
+ 136   1      }
+ 137          
+ 138          void spawn_enemy() {
+ 139   1          unsigned char i, x, left=1+track_offset, right=WIDTH-2+track_offset;
+ 140   1          if (left<1) left=1; if (right>WIDTH-2) right=WIDTH-2;
+ 141   1          for (i=0; i<MAX_ENEMIES; i++) {
+ 142   2              if (!enemies[i].active) {
+ 143   3                  do { x=left+(rand()%(right-left+1)); } while (track[0][x]!=0);
+ 144   3                  enemies[i].x=x; enemies[i].y=0; enemies[i].active=1; track[0][x]=26;
+ 145   3                  break;
+ 146   3              }
+ 147   2          }
+ 148   1      }
+ 149          
+ 150          void game_over() {
+ 151   1        char a[] = {0,0,17,13,20,16,0,21,25,16,22};
+ 152   1          GLCD_ClearAll(); GLCD_String(3, a); while(1);
+ 153   1      }
+ 154          
+ 155          void check_collisions() {
+ 156   1          unsigned char i;
+ 157   1          for (i=0; i<MAX_ENEMIES; i++) {
+ 158   2              if (enemies[i].active && enemies[i].y==player.y && enemies[i].x==player.x) {
+ 159   3                  lives--; enemies[i].active=0; track[player.y][player.x]=0;
+ 160   3                  if (!lives) game_over();
+ 161   3              }
+ 162   2          }
+ 163   1      }
+ 164          
+ 165          void update_game() {
+ 166   1          unsigned char i,j, left, right;
+ 167   1          if (Dir==0 && player.x<WIDTH-2) { track[player.y][player.x]=0; player.x++; delay(50); }
+ 168   1          else if (Esq==0 && player.x>1) { track[player.y][player.x]=0; player.x--; delay(50); }
+ 169   1          if ((rand()%4)==0) {
+ 170   2              char s=(rand()%3)-1;
+ 171   2              if (track_offset+s>=-2 && track_offset+s<=2) track_offset+=s;
+ 172   2          }
+ 173   1          for (i=HEIGHT-1; i>0; i--)
+ 174   1              for (j=0; j<WIDTH; j++) track[i][j]=track[i-1][j];
+ 175   1          left=1+track_offset; right=WIDTH-2+track_offset;
+ 176   1          if (left<0) left=0; if (right>=WIDTH) right=WIDTH-1;
+C51 COMPILER V9.60.7.0   8051_GLCD_TEXT_FONT                                               07/18/2025 19:25:57 PAGE 4   
+
+ 177   1          for (i=0; i<WIDTH; i++) track[0][i]=(i==left||i==right)? 11:((i>left&&i<right)? 0: 0);
+ 178   1          for (i=0; i<MAX_ENEMIES; i++) {
+ 179   2              if (enemies[i].active) {
+ 180   3                  track[enemies[i].y][enemies[i].x]=0;
+ 181   3                  enemies[i].y++;
+ 182   3                  if (enemies[i].y>=HEIGHT) enemies[i].active=0;
+ 183   3                  else track[enemies[i].y][enemies[i].x]=26;
+ 184   3              }
+ 185   2          }
+ 186   1          if ((rand()%10)==0) spawn_enemy();
+ 187   1          if (track[player.y][player.x]==11) {
+ 188   2              lives--; track[player.y][player.x]=0;
+ 189   2              if (!lives) game_over();
+ 190   2              player.x=WIDTH/2;
+ 191   2          }
+ 192   1          track[player.y][player.x]=26;
+ 193   1          check_collisions(); update_hud();
+ 194   1      }
+ 195          
+ 196          void draw_game() {
+ 197   1          unsigned char i,j,x;
+ 198   1          for (i=0; i<HEIGHT; i++)
+ 199   1              for (j=0; j<WIDTH; j++) {
+ 200   2                  x=20+j*6;
+ 201   2                  if (x<128) GLCD_Char(i+1, x, track[i][j]);
+ 202   2              }
+ 203   1      }
+ 204          
+ 205          void tela_inicio() {
+ 206   1        char a[] = {0,0,23,24,21,14,19,0,14,13,22};
+ 207   1          GLCD_ClearAll(); GLCD_String(3, a); delay(2000);
+ 208   1      }
+ 209          
+ 210          void main() {
+ 211   1          tela_inicio(); GLCD_Init(); GLCD_ClearAll(); init_game();
+ 212   1          while (1) {
+ 213   2              update_game(); draw_game(); delay(speed); score++;
+ 214   2              if ((score%100)==0 && speed>50) speed-=5;
+ 215   2          }
+ 216   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   1518    ----
+   CONSTANT SIZE    =    502    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     80      61
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

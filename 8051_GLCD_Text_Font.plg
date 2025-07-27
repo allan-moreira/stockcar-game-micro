@@ -1,0 +1,187 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+E:\Development\8051\4_8051_Interface\1_8051_Interfacing_with_128x64_GLCD\Source code file\8051_GLCD_Text_Font\8051_GLCD_Text_Font.uvproj
+Project File Date:  08/16/2016
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling 8051_GLCD_Text_Font.c...
+Font_Header.h(1): error C301: identifier expected
+Font_Header.h(2): warning C323: newline expected, extra characters found
+Font_Header.h(3): error C129: missing ';' before 'char'
+Font_Header.h(6): warning C312: misplaced endif control
+compiling Font_Source.c...
+Font_Header.h(1): error C301: identifier expected
+Font_Header.h(2): warning C323: newline expected, extra characters found
+Font_Header.h(3): error C129: missing ';' before 'char'
+Font_Header.h(6): warning C312: misplaced endif control
+Target not created
+Build target 'Target 1'
+compiling 8051_GLCD_Text_Font.c...
+Font_Header.h(1): error C301: identifier expected
+Font_Header.h(2): warning C323: newline expected, extra characters found
+Font_Header.h(7): warning C312: misplaced endif control
+compiling Font_Source.c...
+Font_Header.h(1): error C301: identifier expected
+Font_Header.h(2): warning C323: newline expected, extra characters found
+Font_Header.h(7): warning C312: misplaced endif control
+Font_Source.c(3): error C231: 'font': redefinition
+Font_Source.c(101): error C231: 'font': redefinition
+Target not created
+Build target 'Target 1'
+compiling 8051_GLCD_Text_Font.c...
+Font_Header.h(1): error C301: identifier expected
+Font_Header.h(2): warning C323: newline expected, extra characters found
+Font_Header.h(7): warning C312: misplaced endif control
+compiling Font_Source.c...
+Font_Header.h(1): error C301: identifier expected
+Font_Header.h(2): warning C323: newline expected, extra characters found
+Font_Header.h(7): warning C312: misplaced endif control
+Font_Source.c(3): error C231: 'font': redefinition
+Font_Source.c(101): error C231: 'font': redefinition
+Target not created
+Build target 'Target 1'
+compiling 8051_GLCD_Text_Font.c...
+Font_Header.h(1): error C301: identifier expected
+Font_Header.h(2): warning C323: newline expected, extra characters found
+Font_Header.h(7): warning C312: misplaced endif control
+compiling Font_Source.c...
+Font_Header.h(1): error C301: identifier expected
+Font_Header.h(2): warning C323: newline expected, extra characters found
+Font_Header.h(7): warning C312: misplaced endif control
+Font_Source.c(3): error C231: 'font': redefinition
+Font_Source.c(101): error C231: 'font': redefinition
+Target not created
+Build target 'Target 1'
+compiling 8051_GLCD_Text_Font.c...
+Font_Header.h(1): error C301: identifier expected
+Font_Header.h(2): warning C323: newline expected, extra characters found
+Font_Header.h(7): warning C312: misplaced endif control
+compiling Font_Source.c...
+Font_Header.h(1): error C301: identifier expected
+Font_Header.h(2): warning C323: newline expected, extra characters found
+Font_Header.h(7): warning C312: misplaced endif control
+Font_Source.c(3): error C231: 'font': redefinition
+Font_Source.c(101): error C231: 'font': redefinition
+Target not created
+Build target 'Target 1'
+compiling 8051_GLCD_Text_Font.c...
+Font_Header.h(1): error C301: identifier expected
+Font_Header.h(2): warning C323: newline expected, extra characters found
+Font_Header.h(6): warning C312: misplaced endif control
+8051_GLCD_Text_Font.c(13): error C129: missing ';' before 'sbit'
+compiling Font_Source.c...
+Font_Header.h(1): error C301: identifier expected
+Font_Header.h(2): warning C323: newline expected, extra characters found
+Font_Header.h(6): warning C312: misplaced endif control
+Font_Source.c(3): error C129: missing ';' before 'code'
+Target not created
+Build target 'Target 1'
+compiling 8051_GLCD_Text_Font.c...
+Font_Header.h(1): error C301: identifier expected
+Font_Header.h(2): warning C323: newline expected, extra characters found
+Font_Header.h(6): warning C312: misplaced endif control
+compiling Font_Source.c...
+Font_Header.h(1): error C301: identifier expected
+Font_Header.h(2): warning C323: newline expected, extra characters found
+Font_Header.h(6): warning C312: misplaced endif control
+Font_Source.c(3): error C231: 'font': redefinition
+Font_Source.c(101): error C231: 'font': redefinition
+Target not created
+Build target 'Target 1'
+compiling 8051_GLCD_Text_Font.c...
+Font_Header.h(1): error C301: identifier expected
+Font_Header.h(2): warning C323: newline expected, extra characters found
+Font_Header.h(6): warning C312: misplaced endif control
+compiling Font_Source.c...
+Font_Header.h(1): error C301: identifier expected
+Font_Header.h(2): warning C323: newline expected, extra characters found
+Font_Header.h(6): warning C312: misplaced endif control
+Font_Source.c(3): error C231: 'font': redefinition
+Font_Source.c(101): error C231: 'font': redefinition
+Target not created
+Build target 'Target 1'
+compiling 8051_GLCD_Text_Font.c...
+Font_Header.h(1): error C301: identifier expected
+Font_Header.h(2): warning C323: newline expected, extra characters found
+Font_Header.h(7): warning C312: misplaced endif control
+compiling Font_Source.c...
+Font_Header.h(1): error C301: identifier expected
+Font_Header.h(2): warning C323: newline expected, extra characters found
+Font_Header.h(7): warning C312: misplaced endif control
+Font_Source.c(3): error C231: 'font': redefinition
+Font_Source.c(101): error C231: 'font': redefinition
+Target not created
+Build target 'Target 1'
+compiling 8051_GLCD_Text_Font.c...
+Font_Header.h(1): error C301: identifier expected
+Font_Header.h(2): warning C323: newline expected, extra characters found
+Font_Header.h(6): warning C312: misplaced endif control
+compiling Font_Source.c...
+Font_Header.h(1): error C301: identifier expected
+Font_Header.h(2): warning C323: newline expected, extra characters found
+Font_Header.h(6): warning C312: misplaced endif control
+Font_Source.c(3): error C231: 'font': redefinition
+Font_Source.c(101): error C231: 'font': redefinition
+Target not created
+Build target 'Target 1'
+compiling 8051_GLCD_Text_Font.c...
+Font_Header.h(1): error C301: identifier expected
+Font_Header.h(2): warning C323: newline expected, extra characters found
+Font_Header.h(108): warning C312: misplaced endif control
+compiling Font_Source.c...
+Font_Header.h(1): error C301: identifier expected
+Font_Header.h(2): warning C323: newline expected, extra characters found
+Font_Header.h(108): warning C312: misplaced endif control
+Target not created
+Build target 'Target 1'
+compiling 8051_GLCD_Text_Font.c...
+compiling Font_Source.c...
+linking...
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  FONT
+    MODULE:  Font_Source.obj (FONT_SOURCE)
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?FONT_SOURCE
+Program Size: data=25.0 xdata=0 code=2312
+Target not created
+Build target 'Target 1'
+compiling 8051_GLCD_Text_Font.c...
+Font_Header.h(109): warning C323: newline expected, extra characters found
+compiling Font_Source.c...
+Font_Header.h(109): warning C323: newline expected, extra characters found
+linking...
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  FONT
+    MODULE:  Font_Source.obj (FONT_SOURCE)
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?FONT_SOURCE
+Program Size: data=25.0 xdata=0 code=2312
+Target not created
+Build target 'Target 1'
+compiling 8051_GLCD_Text_Font.c...
+linking...
+Program Size: data=25.0 xdata=0 code=1832
+creating hex file from "8051_GLCD_Text_Font"...
+"8051_GLCD_Text_Font" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling 8051_GLCD_Text_Font.c...
+linking...
+Program Size: data=25.0 xdata=0 code=1832
+creating hex file from "8051_GLCD_Text_Font"...
+"8051_GLCD_Text_Font" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling 8051_GLCD_Text_Font.c...
+linking...
+Program Size: data=25.0 xdata=0 code=1832
+creating hex file from "8051_GLCD_Text_Font"...
+"8051_GLCD_Text_Font" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling 8051_GLCD_Text_Font.c...
+linking...
+Program Size: data=25.0 xdata=0 code=1832
+creating hex file from "8051_GLCD_Text_Font"...
+"8051_GLCD_Text_Font" - 0 Error(s), 0 Warning(s).

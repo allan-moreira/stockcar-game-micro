@@ -1,0 +1,501 @@
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    07/18/2025  19:25:57  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.4.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE 8051_GLCD_Text_Font.obj TO 8051_GLCD_Text_Font
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  8051_GLCD_Text_Font.obj (8051_GLCD_TEXT_FONT)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?COPY)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?SCDIV)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?CLDPTR)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?UIDIV)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?SIDIV)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?OFFXADD)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (RAND)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  8051_GLCD_Text_Font (8051_GLCD_TEXT_FONT)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0050H     UNIT         ?DT?8051_GLCD_TEXT_FONT
+            DATA    0058H     001FH     UNIT         _DATA_GROUP_
+            DATA    0077H     0004H     UNIT         ?DT?RAND?RAND
+            IDATA   007BH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     01F6H     UNIT         ?CO?8051_GLCD_TEXT_FONT
+            CODE    09F6H     01C8H     UNIT         ?C?LIB_CODE
+            CODE    0BBEH     0180H     UNIT         ?PR?UPDATE_GAME?8051_GLCD_TEXT_FONT
+            CODE    0D3EH     00E1H     UNIT         ?PR?_GLCD_CHAR?8051_GLCD_TEXT_FONT
+            CODE    0E1FH     00A1H     UNIT         ?PR?UPDATE_HUD?8051_GLCD_TEXT_FONT
+            CODE    0EC0H     008CH     UNIT         ?C_C51STARTUP
+            CODE    0F4CH     0080H     UNIT         ?PR?SPAWN_ENEMY?8051_GLCD_TEXT_FONT
+            CODE    0FCCH     005CH     UNIT         ?PR?GLCD_CLEARALL?8051_GLCD_TEXT_FONT
+            CODE    1028H     0056H     UNIT         ?PR?CHECK_COLLISIONS?8051_GLCD_TEXT_FONT
+            CODE    107EH     0050H     UNIT         ?PR?INIT_GAME?8051_GLCD_TEXT_FONT
+            CODE    10CEH     004DH     UNIT         ?PR?RAND?RAND
+            CODE    111BH     003EH     UNIT         ?PR?MAIN?8051_GLCD_TEXT_FONT
+            CODE    1159H     003BH     UNIT         ?PR?DRAW_GAME?8051_GLCD_TEXT_FONT
+            CODE    1194H     0036H     UNIT         ?PR?_GLCD_DATA?8051_GLCD_TEXT_FONT
+            CODE    11CAH     0034H     UNIT         ?PR?_GLCD_STRING?8051_GLCD_TEXT_FONT
+            CODE    11FEH     0024H     UNIT         ?PR?GLCD_INIT?8051_GLCD_TEXT_FONT
+            CODE    1222H     0020H     UNIT         ?PR?_DELAY?8051_GLCD_TEXT_FONT
+            CODE    1242H     001DH     UNIT         ?PR?TELA_INICIO?8051_GLCD_TEXT_FONT
+            CODE    125FH     0018H     UNIT         ?PR?GAME_OVER?8051_GLCD_TEXT_FONT
+            CODE    1277H     000EH     UNIT         ?PR?_GLCD_COMMAND?8051_GLCD_TEXT_FONT
+            CODE    1285H     000EH     UNIT         ?C_INITSEG
+
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  07/18/2025  19:25:57  PAGE 2
+
+
+
+
+OVERLAY MAP OF MODULE:   8051_GLCD_Text_Font (8051_GLCD_TEXT_FONT)
+
+
+SEGMENT                                            DATA_GROUP 
+  +--> CALLED SEGMENT                            START    LENGTH
+----------------------------------------------------------------
+?C_C51STARTUP                                    -----    -----
+  +--> ?PR?MAIN?8051_GLCD_TEXT_FONT
+  +--> ?C_INITSEG
+
+?PR?MAIN?8051_GLCD_TEXT_FONT                     -----    -----
+  +--> ?PR?TELA_INICIO?8051_GLCD_TEXT_FONT
+  +--> ?PR?GLCD_INIT?8051_GLCD_TEXT_FONT
+  +--> ?PR?GLCD_CLEARALL?8051_GLCD_TEXT_FONT
+  +--> ?PR?INIT_GAME?8051_GLCD_TEXT_FONT
+  +--> ?PR?UPDATE_GAME?8051_GLCD_TEXT_FONT
+  +--> ?PR?DRAW_GAME?8051_GLCD_TEXT_FONT
+  +--> ?PR?_DELAY?8051_GLCD_TEXT_FONT
+
+?PR?TELA_INICIO?8051_GLCD_TEXT_FONT              0058H    000BH
+  +--> ?CO?8051_GLCD_TEXT_FONT
+  +--> ?PR?GLCD_CLEARALL?8051_GLCD_TEXT_FONT
+  +--> ?PR?_GLCD_STRING?8051_GLCD_TEXT_FONT
+  +--> ?PR?_DELAY?8051_GLCD_TEXT_FONT
+
+?PR?GLCD_CLEARALL?8051_GLCD_TEXT_FONT            0065H    0002H
+  +--> ?PR?_GLCD_COMMAND?8051_GLCD_TEXT_FONT
+  +--> ?PR?_GLCD_DATA?8051_GLCD_TEXT_FONT
+
+?PR?_GLCD_DATA?8051_GLCD_TEXT_FONT               -----    -----
+  +--> ?CO?8051_GLCD_TEXT_FONT
+
+?PR?_GLCD_STRING?8051_GLCD_TEXT_FONT             006EH    0005H
+  +--> ?PR?_GLCD_CHAR?8051_GLCD_TEXT_FONT
+
+?PR?_GLCD_CHAR?8051_GLCD_TEXT_FONT               0073H    0004H
+  +--> ?PR?_GLCD_COMMAND?8051_GLCD_TEXT_FONT
+  +--> ?PR?_GLCD_DATA?8051_GLCD_TEXT_FONT
+
+?PR?GLCD_INIT?8051_GLCD_TEXT_FONT                -----    -----
+  +--> ?PR?_DELAY?8051_GLCD_TEXT_FONT
+  +--> ?PR?_GLCD_COMMAND?8051_GLCD_TEXT_FONT
+
+?PR?UPDATE_GAME?8051_GLCD_TEXT_FONT              0058H    0001H
+  +--> ?PR?_DELAY?8051_GLCD_TEXT_FONT
+  +--> ?PR?RAND?RAND
+  +--> ?PR?SPAWN_ENEMY?8051_GLCD_TEXT_FONT
+  +--> ?PR?GAME_OVER?8051_GLCD_TEXT_FONT
+  +--> ?PR?CHECK_COLLISIONS?8051_GLCD_TEXT_FONT
+  +--> ?PR?UPDATE_HUD?8051_GLCD_TEXT_FONT
+
+?PR?SPAWN_ENEMY?8051_GLCD_TEXT_FONT              0059H    0003H
+  +--> ?PR?RAND?RAND
+
+?PR?GAME_OVER?8051_GLCD_TEXT_FONT                005AH    000BH
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  07/18/2025  19:25:57  PAGE 3
+
+
+  +--> ?CO?8051_GLCD_TEXT_FONT
+  +--> ?PR?GLCD_CLEARALL?8051_GLCD_TEXT_FONT
+  +--> ?PR?_GLCD_STRING?8051_GLCD_TEXT_FONT
+
+?PR?CHECK_COLLISIONS?8051_GLCD_TEXT_FONT         0059H    0001H
+  +--> ?PR?GAME_OVER?8051_GLCD_TEXT_FONT
+
+?PR?UPDATE_HUD?8051_GLCD_TEXT_FONT               0059H    0015H
+  +--> ?PR?_GLCD_STRING?8051_GLCD_TEXT_FONT
+
+?PR?DRAW_GAME?8051_GLCD_TEXT_FONT                0058H    0002H
+  +--> ?PR?_GLCD_CHAR?8051_GLCD_TEXT_FONT
+
+
+
+UNRESOLVED EXTERNAL SYMBOLS:
+   NOP
+
+
+
+SYMBOL TABLE OF MODULE:  8051_GLCD_Text_Font (8051_GLCD_TEXT_FONT)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        8051_GLCD_TEXT_FONT
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:0FD7H         PUBLIC        GLCD_ClearAll
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+  C:0BBEH         PUBLIC        update_game
+  D:0008H         PUBLIC        track_offset
+  C:1242H         PUBLIC        tela_inicio
+  D:0009H         PUBLIC        player
+  C:11FEH         PUBLIC        GLCD_Init
+  C:1222H         PUBLIC        _delay
+  D:000CH         PUBLIC        speed
+  D:000DH         PUBLIC        track
+  D:004CH         PUBLIC        score
+  B:00B0H.1       PUBLIC        Dir
+  B:00B0H.2       PUBLIC        RS
+  D:004EH         PUBLIC        lives
+  C:111BH         PUBLIC        main
+  C:1028H         PUBLIC        check_collisions
+  C:0E1FH         PUBLIC        update_hud
+  B:00B0H.5       PUBLIC        Esq
+  C:1159H         PUBLIC        draw_game
+  C:0F4CH         PUBLIC        spawn_enemy
+  C:107EH         PUBLIC        init_game
+  C:0800H         PUBLIC        font
+  C:125FH         PUBLIC        game_over
+  C:1277H         PUBLIC        _GLCD_Command
+  C:09E0H         SYMBOL        _?ix1000
+  C:09EBH         SYMBOL        _?ix1001
+  B:00B0H.0       PUBLIC        E
+  B:00B0H.4       PUBLIC        CS1
+  B:00B0H.3       PUBLIC        CS2
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  07/18/2025  19:25:57  PAGE 4
+
+
+  D:004FH         PUBLIC        enemies
+  C:11CAH         PUBLIC        _GLCD_String
+  C:11BCH         PUBLIC        _GLCD_Data
+  C:0D3EH         PUBLIC        _GLCD_Char
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        k
+  -------         DO            
+  D:0004H         SYMBOL        i
+  D:0002H         SYMBOL        j
+  -------         ENDDO         
+  C:1222H         LINE#         31
+  C:1222H         LINE#         33
+  C:1241H         LINE#         34
+  -------         ENDPROC       _DELAY
+  -------         PROC          _GLCD_COMMAND
+  D:0007H         SYMBOL        c
+  C:1277H         LINE#         36
+  C:1277H         LINE#         37
+  -------         ENDPROC       _GLCD_COMMAND
+  C:1194H         SYMBOL        L?0130
+  -------         PROC          L?0129
+  -------         ENDPROC       L?0129
+  C:1194H         SYMBOL        L?0130
+  -------         PROC          _GLCD_DATA
+  D:0007H         SYMBOL        d
+  C:11BCH         LINE#         40
+  C:11BCH         LINE#         41
+  -------         ENDPROC       _GLCD_DATA
+  -------         PROC          GLCD_INIT
+  C:11FEH         LINE#         44
+  C:11FEH         LINE#         45
+  C:1209H         LINE#         46
+  C:1213H         LINE#         47
+  C:121DH         LINE#         48
+  -------         ENDPROC       GLCD_INIT
+  -------         PROC          L?0131
+  -------         ENDPROC       L?0131
+  -------         PROC          GLCD_CLEARALL
+  -------         DO            
+  D:0065H         SYMBOL        p
+  D:0066H         SYMBOL        c
+  -------         ENDDO         
+  C:0FD7H         LINE#         51
+  C:0FD7H         LINE#         53
+  C:0FDAH         LINE#         54
+  C:0FEBH         LINE#         55
+  C:0FFCH         LINE#         56
+  C:100DH         LINE#         57
+  C:101EH         LINE#         58
+  C:1027H         LINE#         59
+  -------         ENDPROC       GLCD_CLEARALL
+  -------         PROC          _GLCD_CHAR
+  D:0007H         SYMBOL        page_no
+  D:0073H         SYMBOL        col
+  D:0074H         SYMBOL        c
+  -------         DO            
+  D:0075H         SYMBOL        column
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  07/18/2025  19:25:57  PAGE 5
+
+
+  D:0076H         SYMBOL        Page
+  -------         ENDDO         
+  C:0D3EH         LINE#         62
+  C:0D42H         LINE#         64
+  C:0D47H         LINE#         67
+  C:0D5CH         LINE#         69
+  C:0D69H         LINE#         70
+  C:0D78H         LINE#         71
+  C:0D7DH         LINE#         72
+  C:0D8EH         LINE#         75
+  C:0DA6H         LINE#         76
+  C:0DA9H         LINE#         77
+  C:0DADH         LINE#         80
+  C:0DBCH         LINE#         81
+  C:0DCAH         LINE#         82
+  C:0DCFH         LINE#         83
+  C:0DD4H         LINE#         86
+  C:0DDBH         LINE#         87
+  C:0DDEH         LINE#         88
+  C:0DE2H         LINE#         91
+  C:0DE2H         LINE#         92
+  C:0DE4H         LINE#         94
+  C:0DEDH         LINE#         95
+  C:0DF1H         LINE#         96
+  C:0DF3H         LINE#         97
+  C:0DF7H         LINE#         98
+  C:0DFDH         LINE#         99
+  C:0DFDH         LINE#         101
+  C:0E02H         LINE#         102
+  C:0E0AH         LINE#         104
+  C:0E0DH         LINE#         105
+  C:0E10H         LINE#         106
+  C:0E19H         LINE#         107
+  C:0E1EH         LINE#         108
+  C:0E1EH         LINE#         109
+  -------         ENDPROC       _GLCD_CHAR
+  -------         PROC          _GLCD_STRING
+  D:006EH         SYMBOL        page
+  D:006FH         SYMBOL        str
+  -------         DO            
+  D:0072H         SYMBOL        col
+  -------         ENDDO         
+  C:11CAH         LINE#         112
+  C:11D2H         LINE#         113
+  C:11D5H         LINE#         114
+  C:11FDH         LINE#         115
+  -------         ENDPROC       _GLCD_STRING
+  -------         PROC          UPDATE_HUD
+  -------         DO            
+  D:0059H         SYMBOL        buf
+  -------         ENDDO         
+  C:0E1FH         LINE#         117
+  C:0E1FH         LINE#         119
+  C:0E31H         LINE#         120
+  C:0E5DH         LINE#         121
+  C:0E89H         LINE#         122
+  C:0EA0H         LINE#         123
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  07/18/2025  19:25:57  PAGE 6
+
+
+  C:0EAFH         LINE#         124
+  C:0EB7H         LINE#         125
+  -------         ENDPROC       UPDATE_HUD
+  -------         PROC          INIT_GAME
+  -------         DO            
+  D:0007H         SYMBOL        i
+  D:0006H         SYMBOL        j
+  -------         ENDDO         
+  C:107EH         LINE#         128
+  C:107EH         LINE#         130
+  C:1088H         LINE#         131
+  C:108BH         LINE#         132
+  C:10AAH         LINE#         133
+  C:10B0H         LINE#         134
+  C:10BDH         LINE#         135
+  C:10CDH         LINE#         136
+  -------         ENDPROC       INIT_GAME
+  -------         PROC          SPAWN_ENEMY
+  -------         DO            
+  D:0059H         SYMBOL        i
+  D:0007H         SYMBOL        x
+  D:005AH         SYMBOL        left
+  D:005BH         SYMBOL        right
+  -------         ENDDO         
+  C:0F4CH         LINE#         138
+  C:0F4CH         LINE#         139
+  C:0F57H         LINE#         140
+  C:0F6BH         LINE#         141
+  C:0F6EH         LINE#         142
+  C:0F7AH         LINE#         143
+  C:0F9AH         LINE#         144
+  C:0FC1H         LINE#         145
+  C:0FC2H         LINE#         146
+  C:0FC2H         LINE#         147
+  C:0FCBH         LINE#         148
+  -------         ENDPROC       SPAWN_ENEMY
+  -------         PROC          GAME_OVER
+  -------         DO            
+  D:005AH         SYMBOL        a
+  -------         ENDDO         
+  C:125FH         LINE#         150
+  C:125FH         LINE#         151
+  C:1267H         LINE#         152
+  -------         ENDPROC       GAME_OVER
+  -------         PROC          CHECK_COLLISIONS
+  -------         DO            
+  D:0059H         SYMBOL        i
+  -------         ENDDO         
+  C:1028H         LINE#         155
+  C:1028H         LINE#         157
+  C:102BH         LINE#         158
+  C:1053H         LINE#         159
+  C:106DH         LINE#         160
+  C:1074H         LINE#         161
+  C:1074H         LINE#         162
+  C:107DH         LINE#         163
+  -------         ENDPROC       CHECK_COLLISIONS
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  07/18/2025  19:25:57  PAGE 7
+
+
+  -------         PROC          UPDATE_GAME
+  -------         DO            
+  D:0007H         SYMBOL        i
+  D:0006H         SYMBOL        j
+  D:0006H         SYMBOL        left
+  D:0005H         SYMBOL        right
+  -------         DO            
+  D:0058H         SYMBOL        s
+  -------         ENDDO         
+  -------         ENDDO         
+  C:0BBEH         LINE#         165
+  C:0BBEH         LINE#         167
+  C:0BD9H         LINE#         168
+  C:0BF8H         LINE#         169
+  C:0C06H         LINE#         170
+  C:0C14H         LINE#         171
+  C:0C42H         LINE#         172
+  C:0C42H         LINE#         173
+  C:0C44H         LINE#         174
+  C:0C62H         LINE#         175
+  C:0C6BH         LINE#         176
+  C:0C7BH         LINE#         177
+  C:0CA2H         LINE#         178
+  C:0CA4H         LINE#         179
+  C:0CAFH         LINE#         180
+  C:0CCCH         LINE#         181
+  C:0CD5H         LINE#         182
+  C:0CE8H         LINE#         183
+  C:0CF9H         LINE#         184
+  C:0CF9H         LINE#         185
+  C:0CFDH         LINE#         186
+  C:0D0EH         LINE#         187
+  C:0D1DH         LINE#         188
+  C:0D21H         LINE#         189
+  C:0D28H         LINE#         190
+  C:0D2BH         LINE#         191
+  C:0D2BH         LINE#         192
+  C:0D38H         LINE#         193
+  -------         ENDPROC       UPDATE_GAME
+  -------         PROC          DRAW_GAME
+  -------         DO            
+  D:0058H         SYMBOL        i
+  D:0059H         SYMBOL        j
+  D:0005H         SYMBOL        x
+  -------         ENDDO         
+  C:1159H         LINE#         196
+  C:1159H         LINE#         198
+  C:115CH         LINE#         199
+  C:115FH         LINE#         200
+  C:1168H         LINE#         201
+  C:1181H         LINE#         202
+  C:1193H         LINE#         203
+  -------         ENDPROC       DRAW_GAME
+  -------         PROC          TELA_INICIO
+  -------         DO            
+  D:0058H         SYMBOL        a
+  -------         ENDDO         
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  07/18/2025  19:25:57  PAGE 8
+
+
+  C:1242H         LINE#         205
+  C:1242H         LINE#         206
+  C:124AH         LINE#         207
+  -------         ENDPROC       TELA_INICIO
+  -------         PROC          MAIN
+  C:111BH         LINE#         210
+  C:111BH         LINE#         211
+  C:1127H         LINE#         212
+  C:1127H         LINE#         213
+  C:113CH         LINE#         214
+  C:1157H         LINE#         215
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        8051_GLCD_TEXT_FONT
+
+  -------         MODULE        ?C?COPY
+  C:0AC6H         PUBLIC        ?C?COPY
+  -------         ENDMOD        ?C?COPY
+
+  -------         MODULE        ?C?SCDIV
+  C:0AECH         PUBLIC        ?C?SCDIV
+  -------         ENDMOD        ?C?SCDIV
+
+  -------         MODULE        ?C?CLDPTR
+  C:0B0EH         PUBLIC        ?C?CLDPTR
+  -------         ENDMOD        ?C?CLDPTR
+
+  -------         MODULE        ?C?UIDIV
+  C:0B27H         PUBLIC        ?C?UIDIV
+  -------         ENDMOD        ?C?UIDIV
+
+  -------         MODULE        ?C?SIDIV
+  C:0B7CH         PUBLIC        ?C?SIDIV
+  -------         ENDMOD        ?C?SIDIV
+
+  -------         MODULE        ?C?OFFXADD
+  C:0BB2H         PUBLIC        ?C?OFFXADD
+  -------         ENDMOD        ?C?OFFXADD
+
+  -------         MODULE        RAND
+  D:0077H         PUBLIC        ?SRAND?BYTE
+  C:10CEH         PUBLIC        RAND
+  C:1110H         PUBLIC        _SRAND
+  -------         ENDMOD        RAND
+
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  NOP
+    MODULE:  8051_GLCD_Text_Font.obj (8051_GLCD_TEXT_FONT)
+
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  NOP
+    MODULE:  8051_GLCD_Text_Font.obj (8051_GLCD_TEXT_FONT)
+    ADDRESS: 127EH
+
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  NOP
+    MODULE:  8051_GLCD_Text_Font.obj (8051_GLCD_TEXT_FONT)
+    ADDRESS: 1283H
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  07/18/2025  19:25:57  PAGE 9
+
+
+
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  NOP
+    MODULE:  8051_GLCD_Text_Font.obj (8051_GLCD_TEXT_FONT)
+    ADDRESS: 11C3H
+
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  NOP
+    MODULE:  8051_GLCD_Text_Font.obj (8051_GLCD_TEXT_FONT)
+    ADDRESS: 11C8H
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 07F1H BYTE (99%) *
+******************************************************************************
+
+Program Size: data=124.0 xdata=0 code=2710
+LINK/LOCATE RUN COMPLETE.  5 WARNING(S),  0 ERROR(S)
